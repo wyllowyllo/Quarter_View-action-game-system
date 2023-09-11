@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Item
   - Weapon
+  - Coin
   layers:
   - Default
   - TransparentFX
