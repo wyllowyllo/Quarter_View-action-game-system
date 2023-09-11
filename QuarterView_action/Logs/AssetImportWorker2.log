@@ -15,7 +15,7 @@ C:/harbor/Quarter_View-action-game-system/QuarterView_action
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-1445
+4223
 Successfully changed project path to: C:/harbor/Quarter_View-action-game-system/QuarterView_action
 C:/harbor/Quarter_View-action-game-system/QuarterView_action
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,11 +49,11 @@ C:/harbor/Quarter_View-action-game-system/QuarterView_action
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [24772] Host "[IP] 192.168.1.103 [Port] 0 [Flags] 2 [Guid] 124528623 [EditorId] 124528623 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-3VE26N7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [14236] Host "[IP] 192.168.1.103 [Port] 0 [Flags] 2 [Guid] 2191826836 [EditorId] 2191826836 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-3VE26N7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [24772] Host "[IP] 192.168.1.103 [Port] 0 [Flags] 2 [Guid] 124528623 [EditorId] 124528623 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-3VE26N7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [14236] Host "[IP] 192.168.1.103 [Port] 0 [Flags] 2 [Guid] 2191826836 [EditorId] 2191826836 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-3VE26N7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 13.02 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 10.85 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.4f1 (35713cd46cd7)
 [Subsystems] Discovering subsystems at path C:/Unity Editor/2022.3.4f1/Editor/Data/Resources/UnitySubsystems
@@ -69,47 +69,47 @@ Initialize mono
 Mono path[0] = 'C:/Unity Editor/2022.3.4f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Unity Editor/2022.3.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Unity Editor/2022.3.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56072
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56300
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Unity Editor/2022.3.4f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Unity Editor/2022.3.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.011842 seconds.
-- Loaded All Assemblies, in  0.341 seconds
+Registered in 0.009326 seconds.
+- Loaded All Assemblies, in  0.275 seconds
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 365 ms
+Android Extension - Scanning For ADB Devices 278 ms
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.646 seconds
-Domain Reload Profiling: 983ms
-	BeginReloadAssembly (93ms)
+- Finished resetting the current domain, in  0.512 seconds
+Domain Reload Profiling: 785ms
+	BeginReloadAssembly (79ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (61ms)
-	LoadAllAssembliesAndSetupDomain (144ms)
-		LoadAssemblies (89ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (52ms)
+	LoadAllAssembliesAndSetupDomain (109ms)
+		LoadAssemblies (77ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (133ms)
-			TypeCache.Refresh (132ms)
-				TypeCache.ScanAssembly (121ms)
+		AnalyzeDomain (101ms)
+			TypeCache.Refresh (100ms)
+				TypeCache.ScanAssembly (92ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (646ms)
+	FinalizeReload (512ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (599ms)
+		SetupLoadedEditorAssemblies (471ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (460ms)
+			InitializePlatformSupportModulesInManaged (358ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (85ms)
-			ProcessInitializeOnLoadMethodAttributes (49ms)
+			ProcessInitializeOnLoadAttributes (69ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -119,52 +119,52 @@ Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\harbor\Quarter_View-action-game-system\QuarterView_action\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\harbor\Quarter_View-action-game-system\QuarterView_action\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.718 seconds
-Refreshing native plugins compatible for Editor in 5.76 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.568 seconds
+Refreshing native plugins compatible for Editor in 4.36 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.476 seconds
-Domain Reload Profiling: 1187ms
-	BeginReloadAssembly (132ms)
+- Finished resetting the current domain, in  0.385 seconds
+Domain Reload Profiling: 950ms
+	BeginReloadAssembly (106ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (19ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (44ms)
-	LoadAllAssembliesAndSetupDomain (501ms)
-		LoadAssemblies (307ms)
+		CreateAndSetChildDomain (16ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (390ms)
+		LoadAssemblies (228ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (256ms)
-			TypeCache.Refresh (242ms)
-				TypeCache.ScanAssembly (230ms)
+		AnalyzeDomain (215ms)
+			TypeCache.Refresh (201ms)
+				TypeCache.ScanAssembly (191ms)
 			ScanForSourceGeneratedMonoScriptInfo (11ms)
-			ResolveRequiredComponents (3ms)
-	FinalizeReload (476ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (386ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (327ms)
+		SetupLoadedEditorAssemblies (272ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (23ms)
+			InitializePlatformSupportModulesInManaged (20ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (59ms)
-			ProcessInitializeOnLoadAttributes (208ms)
-			ProcessInitializeOnLoadMethodAttributes (19ms)
-			AfterProcessingInitializeOnLoad (14ms)
+			BeforeProcessingInitializeOnLoad (52ms)
+			ProcessInitializeOnLoadAttributes (174ms)
+			ProcessInitializeOnLoadMethodAttributes (13ms)
+			AfterProcessingInitializeOnLoad (9ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 5.61 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (10ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 5.20 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3106 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 34 unused Assets / (56.2 KB). Loaded Objects now: 3573.
-Memory consumption went from 121.8 MB to 121.7 MB.
-Total: 2.939000 ms (FindLiveObjects: 0.201300 ms CreateObjectMapping: 0.097800 ms MarkObjects: 2.559200 ms  DeleteObjects: 0.080000 ms)
+Unloading 3108 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 34 unused Assets / (56.3 KB). Loaded Objects now: 3576.
+Memory consumption went from 121.9 MB to 121.8 MB.
+Total: 2.447100 ms (FindLiveObjects: 0.160300 ms CreateObjectMapping: 0.083000 ms MarkObjects: 2.127500 ms  DeleteObjects: 0.075600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -180,22 +180,81 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 796378.466036 seconds.
-  path: Assets/QuarterView 3D Action BE5/Materials/Coin Gold.mat
-  artifactKey: Guid(9badd50f88a36314a9b72ddf412b424d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/QuarterView 3D Action BE5/Materials/Coin Gold.mat using Guid(9badd50f88a36314a9b72ddf412b424d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08d72408b3a0c60f17527feaaa1c6427') in 0.082628 seconds
+  Time since last request: 867298.265503 seconds.
+  path: Assets/Prefabs/Weapon HandGun.prefab
+  artifactKey: Guid(60ae2cb091607ee45be32fac4fae0559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Weapon HandGun.prefab using Guid(60ae2cb091607ee45be32fac4fae0559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad22d98bc2080b729a0b6dec88e96f95') in 0.157433 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
+Number of asset objects unloaded after import = 22
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/QuarterView 3D Action BE5/Materials/Coin Silver.mat
-  artifactKey: Guid(985dd20c386137b49b1edeb864f32d7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/QuarterView 3D Action BE5/Materials/Coin Silver.mat using Guid(985dd20c386137b49b1edeb864f32d7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b73b77303f6cc18b5fad383eeed3f149') in 0.017788 seconds
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefabs/Item Ammo.prefab
+  artifactKey: Guid(8c684de6e3e041c46aee0ece0b71f62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Item Ammo.prefab using Guid(8c684de6e3e041c46aee0ece0b71f62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '887d76758ffc40784bddb76f09702eb1') in 0.043057 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: 스레드 종료 또는 응용 프로그램 요청 때문에 I/O 작업이 취소되었습니다.
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.215209 seconds.
+  path: Assets/Prefabs/Weapon HandGun.prefab
+  artifactKey: Guid(60ae2cb091607ee45be32fac4fae0559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Weapon HandGun.prefab using Guid(60ae2cb091607ee45be32fac4fae0559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1918c6a33c2ba3094b842cbf1d19b025') in 0.007309 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.002135 seconds.
+  path: Assets/Prefabs/Coin Bronze.prefab
+  artifactKey: Guid(3fff1ef8be319c24895eff008199a104) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Coin Bronze.prefab using Guid(3fff1ef8be319c24895eff008199a104) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc2bf704265a61c6bc70857206bcd4dd') in 0.008724 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Prefabs/Weapon Hammer.prefab
+  artifactKey: Guid(331d7df1063a1974ba757315252889cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Weapon Hammer.prefab using Guid(331d7df1063a1974ba757315252889cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41409e344453abd714f6423d63c4090d') in 0.007285 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Prefabs/Item Ammo.prefab
+  artifactKey: Guid(8c684de6e3e041c46aee0ece0b71f62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Item Ammo.prefab using Guid(8c684de6e3e041c46aee0ece0b71f62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5545971e6d06907a23574c020ef913c4') in 0.008548 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 1.103053 seconds.
+  path: Assets/Prefabs/Coin Bronze.prefab
+  artifactKey: Guid(3fff1ef8be319c24895eff008199a104) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Coin Bronze.prefab using Guid(3fff1ef8be319c24895eff008199a104) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7411f6ba6ef5bb47865e978cc7278a3') in 0.008165 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Prefabs/Weapon SubMachineGun.prefab
+  artifactKey: Guid(277a19bcc511f3840ab610c15fe8993f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Weapon SubMachineGun.prefab using Guid(277a19bcc511f3840ab610c15fe8993f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd25ffc41791752da9130b07cead98f7c') in 0.007531 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefabs/Item Ammo.prefab
+  artifactKey: Guid(8c684de6e3e041c46aee0ece0b71f62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Item Ammo.prefab using Guid(8c684de6e3e041c46aee0ece0b71f62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '509c9cea488396c397dc1fa02bea72b1') in 0.008632 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 335.101454 seconds.
+  path: Assets/Prefabs_real
+  artifactKey: Guid(b7e133754bcbda84c920891d4c35c0e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs_real using Guid(b7e133754bcbda84c920891d4c35c0e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99391ee00d8c1f0ffe8db353323c488d') in 0.000509 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
