@@ -5020,7 +5020,7 @@ GameObject:
   - component: {fileID: 6105164290823708505}
   m_Layer: 0
   m_Name: Weapon Grenade
-  m_TagString: Weapon
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5056,7 +5056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  value: 350
+  value: 1
 --- !u!54 &2598436812081079748
 Rigidbody:
   m_ObjectHideFlags: 0
