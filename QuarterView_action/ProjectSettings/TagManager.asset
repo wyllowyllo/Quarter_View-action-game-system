@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Weapon
   - Coin
+  - Melee
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     bool isJumping;
     bool isDodge;
     bool isSwap;
-
+    bool isFire;
+    bool fireReady=true;
+    float fireDelay;
 
     bool isInteract;
     bool isKey1;
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour
     Animator anim;
     Rigidbody rigid;
     GameObject nearObject;
-    GameObject equipWeapon;
+    Weapon equipWeapon;
 
     public GameObject[] Weapons;
     public bool[] gotWeapons;
@@ -62,12 +64,13 @@ public class Player : MonoBehaviour
         Move();
         Turn();
         Jump();
+        Attack();
         Dodge();
         Interact();
         Swap();
     }
 
-   
+    
 
     void GetInput()
     {
@@ -77,7 +80,8 @@ public class Player : MonoBehaviour
         isWalk = Input.GetButton("Walk");
         isJump = Input.GetButtonDown("Jump");
         isInteract = Input.GetButtonDown("Interaction");
-
+        isFire = Input.GetButtonDown("Fire1");
+       
         isKey1 = Input.GetButtonDown("Swap1");
         isKey2 = Input.GetButtonDown("Swap2");
         isKey3 = Input.GetButtonDown("Swap3");
@@ -89,6 +93,9 @@ public class Player : MonoBehaviour
 
         if (isDodge)
             movVec = dodgeVec;
+
+        if (!fireReady)
+            movVec = Vector3.zero;
         transform.position += movVec * speed * ((isWalk) ? 0.3f : 1f) * Time.deltaTime;
 
        
@@ -141,6 +148,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void Swap()
     {
         int activeWeapon = -1;
@@ -157,7 +165,7 @@ public class Player : MonoBehaviour
 
 
             Weapons[activeWeapon].SetActive(true);
-            equipWeapon = Weapons[activeWeapon];
+            equipWeapon = Weapons[activeWeapon].GetComponentInChildren<Weapon>();
 
             if (prevWeapon!=-1)
                 Weapons[prevWeapon].SetActive(false);
@@ -171,6 +179,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Attack()
+    {
+        if (equipWeapon == null)
+            return;
+
+       
+        fireDelay += Time.deltaTime;
+        fireReady = fireDelay > equipWeapon.rate;
+
+        if(fireReady && isFire && !isDodge && !isSwap)
+        {
+            equipWeapon.Use();
+            anim.SetTrigger("DoSwing");
+            fireDelay = 0;
+        }
+    }
     void ExitDodge()
     {
         speed *= 0.5f;
