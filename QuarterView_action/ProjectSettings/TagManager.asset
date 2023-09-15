@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Coin
   - Melee
+  - Wall
   layers:
   - Default
   - TransparentFX

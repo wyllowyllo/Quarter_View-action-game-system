@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     bool isDodge;
     bool isSwap;
     bool isFire;
+    bool isReload;
+    bool reloading;
     bool fireReady=true;
     float fireDelay;
 
@@ -65,12 +67,13 @@ public class Player : MonoBehaviour
         Turn();
         Jump();
         Attack();
+        Reload();
         Dodge();
         Interact();
         Swap();
     }
 
-    
+  
 
     void GetInput()
     {
@@ -80,8 +83,10 @@ public class Player : MonoBehaviour
         isWalk = Input.GetButton("Walk");
         isJump = Input.GetButtonDown("Jump");
         isInteract = Input.GetButtonDown("Interaction");
-        isFire = Input.GetButtonDown("Fire1");
-       
+        isFire = Input.GetButton("Fire1");
+        isReload=Input.GetButtonDown("Reload");
+
+
         isKey1 = Input.GetButtonDown("Swap1");
         isKey2 = Input.GetButtonDown("Swap2");
         isKey3 = Input.GetButtonDown("Swap3");
@@ -94,7 +99,7 @@ public class Player : MonoBehaviour
         if (isDodge)
             movVec = dodgeVec;
 
-        if (!fireReady)
+        if (!fireReady||reloading)
             movVec = Vector3.zero;
         transform.position += movVec * speed * ((isWalk) ? 0.3f : 1f) * Time.deltaTime;
 
@@ -191,9 +196,36 @@ public class Player : MonoBehaviour
         if(fireReady && isFire && !isDodge && !isSwap)
         {
             equipWeapon.Use();
-            anim.SetTrigger("DoSwing");
+            anim.SetTrigger(equipWeapon.type==Weapon.Type.Melee?"DoSwing":"DoShot");
             fireDelay = 0;
         }
+    }
+
+    private void Reload()
+    {
+        if (equipWeapon == null)
+            return;
+
+        if (equipWeapon.type == Weapon.Type.Melee)
+            return;
+
+        if (ammo <= 0)
+            return;
+
+        if (isReload && !isSwap && !isFire && !isJump && !isDodge)
+        {
+            reloading = true;
+            anim.SetTrigger("DoReload");
+            Invoke("ReloadOut", 3f);
+        }
+    }
+
+    void ReloadOut()
+    {
+        int re_ammo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
+        equipWeapon.curAmmo = re_ammo;
+        ammo -= re_ammo;
+        reloading = false;
     }
     void ExitDodge()
     {
