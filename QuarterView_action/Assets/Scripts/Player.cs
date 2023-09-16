@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     bool isSwap;
     bool isFire;
     bool isReload;
+    bool isWall;
     bool reloading;
     bool fireReady=true;
     float fireDelay;
@@ -73,9 +74,20 @@ public class Player : MonoBehaviour
         Dodge();
         Interact();
         Swap();
+        CollideWall();
+
     }
 
-  
+    private void FixedUpdate()
+    {
+        FreezeRotation();   
+    }
+    void FreezeRotation()
+    {
+        rigid.angularVelocity = Vector3.zero;
+    }
+
+
 
     void GetInput()
     {
@@ -103,6 +115,8 @@ public class Player : MonoBehaviour
 
         if (!fireReady||reloading)
             movVec = Vector3.zero;
+
+        if(!isWall)
         transform.position += movVec * speed * ((isWalk) ? 0.3f : 1f) * Time.deltaTime;
 
        
@@ -110,6 +124,13 @@ public class Player : MonoBehaviour
         anim.SetBool("IsWalk", isWalk);
     }
 
+    void CollideWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
+        isWall = Physics.Raycast(transform.position, transform.forward ,5, LayerMask.GetMask("Wall"));
+
+        
+    }
     void Turn()
     {
         //Rotate a player to the moving direction (by keyboard)
