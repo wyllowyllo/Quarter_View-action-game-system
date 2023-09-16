@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     bool reloading;
     bool fireReady=true;
     float fireDelay;
+    public Camera followCamera;
+
 
     bool isInteract;
     bool isKey1;
@@ -110,8 +112,22 @@ public class Player : MonoBehaviour
 
     void Turn()
     {
-        //Rotate a player to the moving direction
+        //Rotate a player to the moving direction (by keyboard)
         transform.LookAt(transform.position + movVec);
+
+        //Rotate a player to the cursor direction
+        Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit rayHit;
+
+        if(Physics.Raycast(ray, out rayHit, 100))
+        {
+            if (isFire)
+            {
+                Vector3 nextVec = rayHit.point - transform.position;
+                nextVec.y = 0;
+                transform.LookAt(transform.position + nextVec);
+            }
+        }
     }
 
     void Jump()

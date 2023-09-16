@@ -5705,6 +5705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafdf95f8ca129f4d83d3459ba5c4bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCamera: {fileID: 963194227}
   speed: 10
   jumpPower: 20
   Weapons:
