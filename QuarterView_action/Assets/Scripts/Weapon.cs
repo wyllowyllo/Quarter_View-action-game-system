@@ -30,8 +30,8 @@ public class Weapon : MonoBehaviour
     {
         if (type == Type.Melee)
         {
-            StopCoroutine("Swing"); //fuction for stopping a co_routine
-            StartCoroutine("Swing"); // function for execuating a co_routine
+           StopCoroutine("Swing"); //fuction for stopping a co_routine
+           StartCoroutine("Swing"); // function for execuating a co_routine
         }
 
         else if (type == Type.Range&&curAmmo>0)
@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
         meleeArea.enabled = true;
         trailEffect.enabled = true;
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         meleeArea.enabled = false;
 
         yield return new WaitForSeconds(0.3f);

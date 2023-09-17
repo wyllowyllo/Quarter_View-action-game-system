@@ -10,6 +10,8 @@ TagManager:
   - Coin
   - Melee
   - Wall
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - BulletCase
   - Floor
   - Wall
-  - 
-  - 
+  - Enemy
+  - EnemyDead
   - 
   - 
   - 
