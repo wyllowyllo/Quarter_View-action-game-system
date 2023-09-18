@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     bool isSwap;
     bool isFire;
     bool isReload;
+    bool isThrowG;
     bool isWall;
     bool reloading;
     bool fireReady=true;
@@ -39,9 +40,10 @@ public class Player : MonoBehaviour
     public GameObject[] Weapons;
     public bool[] gotWeapons;
     int weaponIdx;
+    public GameObject hasGrenadeObj;
 
     public GameObject[] gotGrenades;
-    public int grenade;
+    public int hasGrenade;
 
     public int hearts;
     public int ammo;
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour
     public int max_heart;
     public int max_ammo;
     public int max_coin;
-    public int max_grenade;
+    public int max_hasGrenade;
 
 
    
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
         Turn();
         Jump();
         Attack();
+        ThrowG();
         Reload();
         Dodge();
         Interact();
@@ -77,6 +80,8 @@ public class Player : MonoBehaviour
         CollideWall();
 
     }
+
+   
 
     private void FixedUpdate()
     {
@@ -99,7 +104,7 @@ public class Player : MonoBehaviour
         isInteract = Input.GetButtonDown("Interaction");
         isFire = Input.GetButton("Fire1");
         isReload=Input.GetButtonDown("Reload");
-
+        isThrowG = Input.GetButtonDown("Fire2");
 
         isKey1 = Input.GetButtonDown("Swap1");
         isKey2 = Input.GetButtonDown("Swap2");
@@ -275,6 +280,32 @@ public class Player : MonoBehaviour
         isSwap = false;
     }
 
+    private void ThrowG()
+    {
+        if (hasGrenade == 0)
+            return;
+
+        if(isThrowG && !isSwap && !isReload)
+        {
+            Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+
+            if (Physics.Raycast(ray, out rayHit, 100))
+            {
+              
+                Vector3 nextVec = rayHit.point - transform.position;
+                nextVec.y = 10;
+                GameObject instantGrenade=Instantiate(hasGrenadeObj, transform.position, transform.rotation);
+                Rigidbody rigidGrenade = instantGrenade.GetComponent<Rigidbody>();
+                rigidGrenade.AddForce(nextVec*2, ForceMode.Impulse);
+                rigidGrenade.AddTorque(Vector3.back*10, ForceMode.Impulse);
+            }
+
+            hasGrenade--;
+            gotGrenades[hasGrenade].SetActive(false);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Floor")
@@ -318,10 +349,10 @@ public class Player : MonoBehaviour
                         coin = max_coin;
                     break;
                 case Item.Type.Grenade:
-                    if (grenade >= max_grenade)
+                    if (hasGrenade >= max_hasGrenade)
                         return;
-                    gotGrenades[grenade].SetActive(true);
-                    grenade += item.value;
+                    gotGrenades[hasGrenade].SetActive(true);
+                    hasGrenade += item.value;
                    
                     break;
               
