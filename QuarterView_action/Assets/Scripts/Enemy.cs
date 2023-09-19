@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,12 +41,19 @@ public class Enemy : MonoBehaviour
 
         Vector3 reactVec = transform.position - other.gameObject.transform.position;
       
-        StartCoroutine(OnDamage(reactVec));
+        StartCoroutine(OnDamage(reactVec,false));
     
     Debug.Log("cur health: " + curHealth);
     }
 
-    IEnumerator OnDamage(Vector3 reactVec)
+    public void HitByGrenade(Vector3 explosionPos)
+    {
+        curHealth -= 100;
+        Vector3 reactVec = explosionPos - transform.position;
+        StartCoroutine(OnDamage(reactVec,true));
+    }
+
+    IEnumerator OnDamage(Vector3 reactVec, bool isGrenade)
     {
         material.color = Color.red;
 
@@ -58,9 +66,22 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            reactVec = reactVec.normalized;
-            reactVec += Vector3.up;
-            rigid.AddForce(reactVec*5, ForceMode.Impulse);
+
+            if (isGrenade)
+            {
+                reactVec = reactVec.normalized;
+                reactVec += Vector3.up*3;
+                rigid.freezeRotation = false;
+                rigid.AddForce(reactVec * 5, ForceMode.Impulse);
+                rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
+            }
+            else
+            {
+                reactVec = reactVec.normalized;
+                reactVec += Vector3.up;
+                rigid.AddForce(reactVec * 5, ForceMode.Impulse);
+            }
+           
 
             material.color = Color.gray;
             gameObject.layer = 11;

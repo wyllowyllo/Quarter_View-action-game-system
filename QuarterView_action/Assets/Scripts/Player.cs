@@ -297,7 +297,7 @@ public class Player : MonoBehaviour
                 nextVec.y = 10;
                 GameObject instantGrenade=Instantiate(hasGrenadeObj, transform.position, transform.rotation);
                 Rigidbody rigidGrenade = instantGrenade.GetComponent<Rigidbody>();
-                rigidGrenade.AddForce(nextVec*2, ForceMode.Impulse);
+                rigidGrenade.AddForce(nextVec, ForceMode.Impulse);
                 rigidGrenade.AddTorque(Vector3.back*10, ForceMode.Impulse);
             }
 
