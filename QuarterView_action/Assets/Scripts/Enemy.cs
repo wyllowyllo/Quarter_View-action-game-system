@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,16 +13,46 @@ public class Enemy : MonoBehaviour
     BoxCollider collid;
     Material material;
 
+    public Transform target;
+    NavMeshAgent nav;
+    Animator anim;
+
+    bool isChase;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         collid = GetComponent<BoxCollider>();
-        material = GetComponent<MeshRenderer>().material;
+        material = GetComponentInChildren<MeshRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
+
+        Invoke("StartChase", 2.0f);
     }
 
+
+    private void FixedUpdate()
+    {
+        FreezeVelocity();
+    }
+    void FreezeVelocity()
+    {
+        if (isChase)
+        {
+            rigid.velocity = Vector3.zero;
+            rigid.angularVelocity = Vector3.zero;
+        }
+    }
+
+    void StartChase()
+    {
+        anim.SetBool("isWalk", true);
+        isChase = true;
+    }
     // Update is called once per frame
     void Update()
     {
+        if(isChase)
+            nav.SetDestination(target.position);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,17 +62,19 @@ public class Enemy : MonoBehaviour
         {
             Weapon weapon = other.gameObject.GetComponent<Weapon>();
             curHealth -= weapon.damage;
+            Vector3 reactVec = transform.position - other.gameObject.transform.position;
+            StartCoroutine(OnDamage(reactVec, false));
 
         }
         else if (other.gameObject.tag == "Bullet")
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             curHealth -= bullet.dagame;
+            Vector3 reactVec = transform.position - other.gameObject.transform.position;
+            StartCoroutine(OnDamage(reactVec, false));
         }
 
-        Vector3 reactVec = transform.position - other.gameObject.transform.position;
-      
-        StartCoroutine(OnDamage(reactVec,false));
+        
     
     Debug.Log("cur health: " + curHealth);
     }
@@ -69,6 +102,7 @@ public class Enemy : MonoBehaviour
 
             if (isGrenade)
             {
+               
                 reactVec = reactVec.normalized;
                 reactVec += Vector3.up*3;
                 rigid.freezeRotation = false;
@@ -81,8 +115,10 @@ public class Enemy : MonoBehaviour
                 reactVec += Vector3.up;
                 rigid.AddForce(reactVec * 5, ForceMode.Impulse);
             }
-           
 
+            isChase = false;
+            nav.enabled = false;
+            anim.SetTrigger("doDie");
             material.color = Color.gray;
             gameObject.layer = 11;
             Destroy(gameObject, 4.0f);
