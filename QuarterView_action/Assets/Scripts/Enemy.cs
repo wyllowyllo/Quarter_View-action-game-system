@@ -12,11 +12,12 @@ public class Enemy : MonoBehaviour
     Rigidbody rigid;
     BoxCollider collid;
     Material material;
-
+    public BoxCollider meleeArea;
     public Transform target;
     NavMeshAgent nav;
     Animator anim;
 
+    bool isAttack;
     bool isChase;
     private void Awake()
     {
@@ -33,6 +34,43 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         FreezeVelocity();
+        Targeting();
+    }
+
+    private void Targeting()
+    {
+        float targetRadius = 1.5f;
+        float targetRange = 3f;
+
+        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position,
+            targetRadius,
+            transform.forward,
+            targetRange,
+            LayerMask.GetMask("Player"));
+
+        if (rayHits.Length > 0 && !isAttack)
+        {
+            StartCoroutine(Attack());
+        }
+
+    }
+
+    IEnumerator Attack()
+    {
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack", true);
+      
+        yield return new WaitForSeconds(0.2f);
+        meleeArea.enabled = true;
+       
+        yield return new WaitForSeconds(1f);
+        meleeArea.enabled = false ;
+
+        yield return new WaitForSeconds(1f);
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack", false);
     }
     void FreezeVelocity()
     {
@@ -51,8 +89,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isChase)
+        if (nav.enabled) {
             nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+        }
+           
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,7 +110,7 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.tag == "Bullet")
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
-            curHealth -= bullet.dagame;
+            curHealth -= bullet.damage;
             Vector3 reactVec = transform.position - other.gameObject.transform.position;
             StartCoroutine(OnDamage(reactVec, false));
         }

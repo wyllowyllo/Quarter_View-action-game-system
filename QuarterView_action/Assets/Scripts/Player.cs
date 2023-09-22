@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     bool isReload;
     bool isThrowG;
     bool isWall;
+    bool isDamage;
     bool reloading;
     bool fireReady=true;
     float fireDelay;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     Rigidbody rigid;
     GameObject nearObject;
     Weapon equipWeapon;
+    MeshRenderer[] meshs;
 
     public GameObject[] Weapons;
     public bool[] gotWeapons;
@@ -62,6 +64,7 @@ public class Player : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody>();
+        meshs = GetComponentsInChildren<MeshRenderer>();
     }
     // Update is called once per frame
     void Update()
@@ -369,5 +372,29 @@ public class Player : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+        else if (other.tag == "EnemyBullet")
+        {
+            if (!isDamage)
+            {
+                Bullet bullet = other.GetComponent<Bullet>();
+                hearts -= bullet.damage;
+                StartCoroutine(OnDamage());
+            }
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        foreach(MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.yellow;
+        }
+        yield return new WaitForSeconds(1.0f);
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.white;
+        }
+        isDamage = false;
     }
 }
