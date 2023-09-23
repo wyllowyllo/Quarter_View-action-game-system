@@ -5,10 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage;
-
+    public bool isMelee;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (!isMelee && collision.gameObject.tag == "Floor")
         {
             Destroy(gameObject, 3.0f);
         }
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-         if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Enemy")
+         if (!isMelee&&other.gameObject.tag == "Wall" || other.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
         }

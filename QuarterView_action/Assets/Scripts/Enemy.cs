@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyType { A,B,C};
+    public EnemyType type;
     public int maxHealth;
     public int curHealth;
 
@@ -16,6 +18,7 @@ public class Enemy : MonoBehaviour
     public Transform target;
     NavMeshAgent nav;
     Animator anim;
+    public GameObject bullet;
 
     bool isAttack;
     bool isChase;
@@ -39,8 +42,25 @@ public class Enemy : MonoBehaviour
 
     private void Targeting()
     {
-        float targetRadius = 1.5f;
-        float targetRange = 3f;
+        float targetRadius = 0f;
+        float targetRange = 0f;
+
+        //타격 범위 설정
+        switch (type)
+        {
+            case EnemyType.A:
+                targetRadius = 1.5f;
+                targetRange = 3f;
+                break;
+            case EnemyType.B:
+                targetRadius = 1f;
+                targetRange = 12f;
+                break;
+            case EnemyType.C:
+                targetRadius = 0.5f;
+                targetRange = 25f;
+                break;
+        }
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position,
             targetRadius,
@@ -60,14 +80,40 @@ public class Enemy : MonoBehaviour
         isChase = false;
         isAttack = true;
         anim.SetBool("isAttack", true);
-      
-        yield return new WaitForSeconds(0.2f);
-        meleeArea.enabled = true;
-       
-        yield return new WaitForSeconds(1f);
-        meleeArea.enabled = false ;
 
-        yield return new WaitForSeconds(1f);
+
+        switch (type)
+        {
+            case EnemyType.A:
+                yield return new WaitForSeconds(0.2f);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(1f);
+                meleeArea.enabled = false;
+
+                yield return new WaitForSeconds(1f);
+                break;
+            case EnemyType.B:
+                yield return new WaitForSeconds(0.1f);
+                rigid.AddForce(transform.forward * 20, ForceMode.Impulse);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(0.5f);
+                rigid.velocity = Vector3.zero;
+                meleeArea.enabled = false;
+
+                yield return new WaitForSeconds(2f);
+                break;
+            case EnemyType.C:
+                yield return new WaitForSeconds(0.5f);
+                GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
+                Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
+                bulletRigid.velocity = transform.forward * 30;
+                yield return new WaitForSeconds(2f);
+                break;
+        }
+
+       
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack", false);

@@ -378,8 +378,14 @@ public class Player : MonoBehaviour
             {
                 Bullet bullet = other.GetComponent<Bullet>();
                 hearts -= bullet.damage;
+
+                if (other.GetComponent<Rigidbody>() != null)
+                    Destroy(other.gameObject);
+
                 StartCoroutine(OnDamage());
             }
+
+          
         }
     }
 
