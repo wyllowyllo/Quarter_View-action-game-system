@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  isMelee: 0
+  isRock: 0
 --- !u!1 &8357678257782816023
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,11 +97,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8357678257782816023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.23}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8927513091639532885}
+  - {fileID: 5721667356218551614}
   - {fileID: 6856334134435199336}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -164,10 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df024fa8e05d1a64bbfa7f5795f13ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   maxHealth: 50
   curHealth: 50
   meleeArea: {fileID: 8281148727434117566}
   target: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!195 &1967286031872926786
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -314,7 +318,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 546314092831128346}
   m_SourcePrefab: {fileID: 100100000, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}
---- !u!1 &8119767441617356783 stripped
+--- !u!1 &4912480006219413380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}
   m_PrefabInstance: {fileID: 5255079919782169301}
@@ -326,7 +330,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8119767441617356783}
+  m_GameObject: {fileID: 4912480006219413380}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0f59d35996e16ba42b77408a05b061b0, type: 2}
@@ -340,7 +344,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!4 &8927513091639532885 stripped
+--- !u!4 &5721667356218551614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98a47f1cd28823f4b8ab7f52d3d506fb, type: 3}
   m_PrefabInstance: {fileID: 5255079919782169301}

@@ -6,14 +6,14 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public enum EnemyType { A,B,C};
+    public enum EnemyType { A,B,C,D};
     public EnemyType type;
     public int maxHealth;
     public int curHealth;
 
     Rigidbody rigid;
     BoxCollider collid;
-    Material material;
+    MeshRenderer[] meshs;
     public BoxCollider meleeArea;
     public Transform target;
     NavMeshAgent nav;
@@ -26,11 +26,12 @@ public class Enemy : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         collid = GetComponent<BoxCollider>();
-        material = GetComponentInChildren<MeshRenderer>().material;
+        meshs = GetComponentsInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 
-        Invoke("StartChase", 2.0f);
+        if(type!=EnemyType.D)
+            Invoke("StartChase", 2.0f);
     }
 
 
@@ -42,36 +43,40 @@ public class Enemy : MonoBehaviour
 
     private void Targeting()
     {
-        float targetRadius = 0f;
-        float targetRange = 0f;
-
-        //타격 범위 설정
-        switch (type)
+        if(type != EnemyType.D)
         {
-            case EnemyType.A:
-                targetRadius = 1.5f;
-                targetRange = 3f;
-                break;
-            case EnemyType.B:
-                targetRadius = 1f;
-                targetRange = 12f;
-                break;
-            case EnemyType.C:
-                targetRadius = 0.5f;
-                targetRange = 25f;
-                break;
-        }
+            float targetRadius = 0f;
+            float targetRange = 0f;
 
-        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position,
-            targetRadius,
-            transform.forward,
-            targetRange,
-            LayerMask.GetMask("Player"));
+            //타격 범위 설정
+            switch (type)
+            {
+                case EnemyType.A:
+                    targetRadius = 1.5f;
+                    targetRange = 3f;
+                    break;
+                case EnemyType.B:
+                    targetRadius = 1f;
+                    targetRange = 12f;
+                    break;
+                case EnemyType.C:
+                    targetRadius = 0.5f;
+                    targetRange = 25f;
+                    break;
+            }
 
-        if (rayHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(Attack());
+            RaycastHit[] rayHits = Physics.SphereCastAll(transform.position,
+                targetRadius,
+                transform.forward,
+                targetRange,
+                LayerMask.GetMask("Player"));
+
+            if (rayHits.Length > 0 && !isAttack)
+            {
+                StartCoroutine(Attack());
+            }
         }
+        
 
     }
 
@@ -135,7 +140,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nav.enabled) {
+        if (nav.enabled&&type!=EnemyType.D) {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
         }
@@ -175,14 +180,17 @@ public class Enemy : MonoBehaviour
 
     IEnumerator OnDamage(Vector3 reactVec, bool isGrenade)
     {
-        material.color = Color.red;
+        foreach(MeshRenderer mesh in meshs)
+            mesh.material.color = Color.red;
+
 
         yield return new WaitForSeconds(0.1f);
 
 
         if (curHealth > 0)
         {
-            material.color = Color.white;
+            foreach (MeshRenderer mesh in meshs)
+                mesh.material.color = Color.white;
         }
         else
         {
@@ -206,9 +214,12 @@ public class Enemy : MonoBehaviour
             isChase = false;
             nav.enabled = false;
             anim.SetTrigger("doDie");
-            material.color = Color.gray;
+            foreach (MeshRenderer mesh in meshs)
+                mesh.material.color = Color.gray;
             gameObject.layer = 11;
-            Destroy(gameObject, 4.0f);
+
+            if(type!=EnemyType.D)
+                Destroy(gameObject, 4.0f);
         }
         
     }
