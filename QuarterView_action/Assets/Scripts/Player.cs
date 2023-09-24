@@ -379,28 +379,37 @@ public class Player : MonoBehaviour
                 Bullet bullet = other.GetComponent<Bullet>();
                 hearts -= bullet.damage;
 
-                if (other.GetComponent<Rigidbody>() != null)
-                    Destroy(other.gameObject);
-
-                StartCoroutine(OnDamage());
+                bool isBossMelee=false;
+                if (other.name == "Boss Melee Area")
+                {
+                    isBossMelee = true;
+                }
+                StartCoroutine(OnDamage(isBossMelee));
             }
+            if (other.GetComponent<Rigidbody>() != null)
+                Destroy(other.gameObject);
 
-          
+
         }
     }
 
-    IEnumerator OnDamage()
+    IEnumerator OnDamage(bool isBossMelee)
     {
         isDamage = true;
         foreach(MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.yellow;
         }
+        if (isBossMelee)
+        {
+            rigid.AddForce(transform.forward * -25, ForceMode.Impulse);
+        }
         yield return new WaitForSeconds(1.0f);
         foreach (MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.white;
         }
+        rigid.velocity = Vector3.zero;
         isDamage = false;
     }
 }

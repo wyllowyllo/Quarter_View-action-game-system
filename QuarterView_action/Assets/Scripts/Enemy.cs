@@ -11,18 +11,19 @@ public class Enemy : MonoBehaviour
     public int maxHealth;
     public int curHealth;
 
-    Rigidbody rigid;
-    BoxCollider collid;
-    MeshRenderer[] meshs;
+    protected Rigidbody rigid;
+    protected BoxCollider collid;
+    protected MeshRenderer[] meshs;
     public BoxCollider meleeArea;
     public Transform target;
-    NavMeshAgent nav;
-    Animator anim;
+    protected NavMeshAgent nav;
+    protected Animator anim;
     public GameObject bullet;
 
     bool isAttack;
     bool isChase;
-    private void Awake()
+    public bool isDead;
+    protected void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         collid = GetComponent<BoxCollider>();
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     private void Targeting()
     {
-        if(type != EnemyType.D)
+        if(!isDead&&type != EnemyType.D)
         {
             float targetRadius = 0f;
             float targetRange = 0f;
@@ -211,6 +212,7 @@ public class Enemy : MonoBehaviour
                 rigid.AddForce(reactVec * 5, ForceMode.Impulse);
             }
 
+            isDead = true;
             isChase = false;
             nav.enabled = false;
             anim.SetTrigger("doDie");
