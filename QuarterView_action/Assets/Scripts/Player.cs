@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     Animator anim;
     Rigidbody rigid;
     GameObject nearObject;
-    Weapon equipWeapon;
+    public Weapon equipWeapon;
     MeshRenderer[] meshs;
 
     public GameObject[] Weapons;
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     public int hearts;
     public int ammo;
     public int coin;
-   
+    public int score;
 
     public int max_heart;
     public int max_ammo;
@@ -66,6 +66,10 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody>();
         meshs = GetComponentsInChildren<MeshRenderer>();
+
+
+        Debug.Log(PlayerPrefs.GetInt("MaxScore"));
+        //PlayerPrefs.SetInt("MaxScore",24100);
     }
     // Update is called once per frame
     void Update()

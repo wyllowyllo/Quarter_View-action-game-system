@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4875077042498983944}
   - component: {fileID: 8730537815520187695}
   - component: {fileID: 6425833796136433823}
+  - component: {fileID: 2790307749460855355}
   m_Layer: 10
   m_Name: Enemy D
   m_TagString: Enemy
@@ -139,6 +140,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2790307749460855355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799258821884189259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73df695d5dfe7a9468e94ce5d8da2550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  maxHealth: 5000
+  curHealth: 5000
+  meleeArea: {fileID: 0}
+  target: {fileID: 0}
+  bullet: {fileID: 0}
+  isDead: 0
+  missile: {fileID: 0}
+  missilePortA: {fileID: 0}
+  missilePortB: {fileID: 0}
+  isLook: 0
 --- !u!1 &846304593956166412
 GameObject:
   m_ObjectHideFlags: 0
