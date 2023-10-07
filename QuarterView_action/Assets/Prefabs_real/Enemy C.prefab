@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5611704748778292619}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2670492829459483091
 BoxCollider:
@@ -121,9 +121,15 @@ MonoBehaviour:
   type: 2
   maxHealth: 200
   curHealth: 200
+  score: 250
   meleeArea: {fileID: 0}
   target: {fileID: 0}
   bullet: {fileID: 1918226119109326337, guid: 21b29b879b9999142b9834e63d6f48b1, type: 3}
+  Coins:
+  - {fileID: 7914418100151808141, guid: 3fff1ef8be319c24895eff008199a104, type: 3}
+  - {fileID: 4265335730902592023, guid: 95b7f5fac03f867488871367f076c36c, type: 3}
+  - {fileID: 5452868273526785642, guid: f35d2e7233025aa499a5b26a70f59eb4, type: 3}
+  isDead: 0
 --- !u!1001 &5362237677388227168
 PrefabInstance:
   m_ObjectHideFlags: 0

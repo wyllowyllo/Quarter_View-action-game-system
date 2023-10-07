@@ -14,6 +14,15 @@ public class GameManager : MonoBehaviour
     public int enemyNumA;
     public int enemyNumB;
     public int enemyNumC;
+    public int enemyNumD;
+
+    public GameObject itemShop;
+    public GameObject weaponShop;
+    public GameObject stagePortal;
+    public Transform[] enemyZones;
+    public GameObject[] enemies;
+    public List<int> enemyList;
+
 
     public GameObject menuPanel;
     public GameObject gamePanel;
@@ -36,10 +45,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore")); 
+        maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
+        enemyList = new List<int>();
+        
     }
 
-    public void GameStart()
+    public void GameStart() // it's called when the start_button (which is in the menuPaenl) is pushed.
     {
         menuCamera.SetActive(false);
         gameCamera.SetActive(true);
@@ -47,7 +58,93 @@ public class GameManager : MonoBehaviour
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
 
+        foreach (Transform zone in enemyZones)
+            zone.gameObject.SetActive(false);
+
         player.gameObject.SetActive(true);
+        
+    }
+
+    public void StageStart()
+    {
+        isBattle = true;
+        itemShop.SetActive(false);
+        weaponShop.SetActive(false);
+        stagePortal.SetActive(false);
+
+        foreach(Transform zone in enemyZones)
+            zone.gameObject.SetActive(true);
+
+        StartCoroutine(InBattle());
+    }
+
+    public void StageEnd()
+    {
+        player.transform.position = Vector3.up * 0.8f;
+
+        isBattle = false;
+        itemShop.SetActive(true);
+        weaponShop.SetActive(true);
+        stagePortal.SetActive(true);
+
+        foreach (Transform zone in enemyZones)
+            zone.gameObject.SetActive(false);
+
+        stage++;
+    }
+
+    IEnumerator InBattle()
+    {
+        if (stage % 5 == 0)
+        {
+            enemyNumD++;
+            GameObject bossObj = Instantiate(enemies[3], enemyZones[0].position, enemyZones[0].rotation);
+            boss = bossObj.GetComponent<Boss>();
+            boss.target = player.transform;
+            boss.gamaManager = this;
+        }
+        else
+        {
+            for (int index = 0; index < stage; index++)
+            {
+                int ran = Random.Range(0, 3);
+                enemyList.Add(ran);
+
+                switch (ran)
+                {
+                    case 0:
+                        enemyNumA++;
+                        break;
+                    case 1:
+                        enemyNumB++;
+                        break;
+                    case 2:
+                        enemyNumC++;
+                        break;
+                }
+            }
+
+            while (enemyList.Count > 0)
+            {
+                int ranZone = Random.Range(0, 4);
+                GameObject enemyObj = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
+
+                Enemy enemyLogic = enemyObj.GetComponent<Enemy>();
+                enemyLogic.target = player.transform;
+                enemyLogic.gamaManager = this;
+                enemyList.RemoveAt(0);
+                yield return new WaitForSeconds(4.0f);
+            }
+        }
+
+        while (enemyNumA + enemyNumB + enemyNumC + enemyNumD > 0)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(4.0f);
+        StageEnd();
+        
     }
 
     private void Update()
@@ -56,7 +153,7 @@ public class GameManager : MonoBehaviour
             playTime += Time.deltaTime;
     }
 
-    private void LateUpdate() //it's called after Update func calling
+    private void LateUpdate() //it's called after the call of Update func
     {
         //Stage UI(Stage, Time, Score)
         scoreText.text = string.Format("{0:n0}", player.score);
@@ -89,6 +186,7 @@ public class GameManager : MonoBehaviour
         enemyCText.text = "x " + enemyNumC.ToString();
 
         //Boss Health bar UI
-        bossHealthBar.localScale = new Vector3((float)boss.curHealth / boss.maxHealth, 1, 1);
+        if(boss!=null)
+            bossHealthBar.localScale = new Vector3((float)boss.curHealth / boss.maxHealth, 1, 1);
     }
 }

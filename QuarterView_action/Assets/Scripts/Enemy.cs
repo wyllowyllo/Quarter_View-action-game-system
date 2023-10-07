@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Enemy : MonoBehaviour
 {
     public enum EnemyType { A,B,C,D};
     public EnemyType type;
     public int maxHealth;
     public int curHealth;
+    public int score;
 
     protected Rigidbody rigid;
     protected BoxCollider collid;
@@ -19,6 +21,8 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent nav;
     protected Animator anim;
     public GameObject bullet;
+    public GameObject[] Coins;
+    public GameManager gamaManager;
 
     bool isAttack;
     bool isChase;
@@ -195,7 +199,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-
+            StopCoroutine(Attack());  //Á×¾úÀ¸¸é °ø°Ý·çÆ¾ Áï½Ã ¸ØÃã
             if (isGrenade)
             {
                
@@ -220,7 +224,28 @@ public class Enemy : MonoBehaviour
                 mesh.material.color = Color.gray;
             gameObject.layer = 11;
 
-            if(type!=EnemyType.D)
+            Player player = target.GetComponent<Player>();
+            player.score += score;
+
+            int ranCoin = UnityEngine.Random.Range(0, 3);
+            Instantiate(Coins[ranCoin], transform.position, Quaternion.identity);
+
+            switch (type)
+            {
+                case EnemyType.A:
+                    gamaManager.enemyNumA--;
+                    break;
+                case EnemyType.B:
+                    gamaManager.enemyNumB--;
+                    break;
+                case EnemyType.C:
+                    gamaManager.enemyNumC--;
+                    break;
+                case EnemyType.D:
+                    gamaManager.enemyNumD--;
+                    break;
+            }
+            
                 Destroy(gameObject, 4.0f);
         }
         

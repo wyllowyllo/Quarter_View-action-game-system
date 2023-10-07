@@ -152,16 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73df695d5dfe7a9468e94ce5d8da2550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 3
   maxHealth: 5000
   curHealth: 5000
-  meleeArea: {fileID: 0}
+  score: 2500
+  meleeArea: {fileID: 1708197859271988390}
   target: {fileID: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 9115439967110844771, guid: 8136d649db2c2374cb6673e8dddfdf20, type: 3}
+  Coins:
+  - {fileID: 7914418100151808141, guid: 3fff1ef8be319c24895eff008199a104, type: 3}
+  - {fileID: 4265335730902592023, guid: 95b7f5fac03f867488871367f076c36c, type: 3}
+  - {fileID: 5452868273526785642, guid: f35d2e7233025aa499a5b26a70f59eb4, type: 3}
+  gamaManager: {fileID: 0}
   isDead: 0
-  missile: {fileID: 0}
-  missilePortA: {fileID: 0}
-  missilePortB: {fileID: 0}
+  missile: {fileID: 8694350500918231153, guid: 87346b385f5a0dd4e984a4d77bcb8fb8, type: 3}
+  missilePortA: {fileID: 6594043685898074807}
+  missilePortB: {fileID: 293445844756192927}
   isLook: 0
 --- !u!1 &846304593956166412
 GameObject:
@@ -236,6 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3363763471957124727}
   - component: {fileID: 1708197859271988390}
+  - component: {fileID: 8629123587798040652}
   m_Layer: 13
   m_Name: Melee Area
   m_TagString: EnemyBullet
@@ -279,6 +286,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9, y: 2, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8629123587798040652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366384181629720250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2676bda69f1dd40b4c1301573b8c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
+  isMelee: 1
+  isRock: 0
 --- !u!1001 &6054874086003966226
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -104,7 +104,7 @@ Transform:
   - {fileID: 5721667356218551614}
   - {fileID: 6856334134435199336}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1068384600713428342
 BoxCollider:
@@ -169,9 +169,15 @@ MonoBehaviour:
   type: 0
   maxHealth: 50
   curHealth: 50
+  score: 100
   meleeArea: {fileID: 8281148727434117566}
   target: {fileID: 0}
   bullet: {fileID: 0}
+  Coins:
+  - {fileID: 7914418100151808141, guid: 3fff1ef8be319c24895eff008199a104, type: 3}
+  - {fileID: 4265335730902592023, guid: 95b7f5fac03f867488871367f076c36c, type: 3}
+  - {fileID: 5452868273526785642, guid: f35d2e7233025aa499a5b26a70f59eb4, type: 3}
+  isDead: 0
 --- !u!195 &1967286031872926786
 NavMeshAgent:
   m_ObjectHideFlags: 0

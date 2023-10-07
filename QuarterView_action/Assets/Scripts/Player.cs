@@ -347,10 +347,13 @@ public class Player : MonoBehaviour
             nearObject = null;
         else if (other.tag == "Shop")
         {
-            Shop shop = nearObject.GetComponent<Shop>();
-            shop.Exit();
-            isShop = false;
-            nearObject = null;
+            if (other != null)
+            {
+                Shop shop = nearObject.GetComponent<Shop>();
+                shop.Exit();
+                isShop = false;
+                nearObject = null;
+            }
         }
     }
 
@@ -396,8 +399,11 @@ public class Player : MonoBehaviour
         {
             if (!isDamage)
             {
-                Bullet bullet = other.GetComponent<Bullet>();
-                hearts -= bullet.damage;
+                if (other.gameObject != null) //데미지 입기 전 적이 죽었을 때 오류 방지
+                {
+                    Bullet bullet = other.GetComponent<Bullet>();
+                    hearts -= bullet.damage;
+                }
 
                 bool isBossMelee=false;
                 if (other.name == "Boss Melee Area")
@@ -406,7 +412,7 @@ public class Player : MonoBehaviour
                 }
                 StartCoroutine(OnDamage(isBossMelee));
             }
-            if (other.GetComponent<Rigidbody>() != null)
+            if (other.GetComponent<Rigidbody>() != null) //projectile only
                 Destroy(other.gameObject);
 
 
