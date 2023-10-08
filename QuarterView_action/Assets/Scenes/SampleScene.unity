@@ -1045,7 +1045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5461052779654786451, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5461052779654786451, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: m_TagString
@@ -1489,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5900002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7865,7 +7865,7 @@ MonoBehaviour:
   hasGrenade: 0
   hearts: 1
   ammo: 100
-  coin: 8000
+  coin: 10000
   score: 0
   max_heart: 3
   max_ammo: 500
@@ -15109,6 +15109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 847167553}
+  - component: {fileID: 847167554}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -15132,6 +15133,20 @@ Transform:
   m_Father: {fileID: 2081183625}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &847167554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847167552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0ad2f23026f6d4799c70803669e353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 375792356}
+  rotateSpeed: 15
 --- !u!1 &847740488
 GameObject:
   m_ObjectHideFlags: 0
@@ -15258,7 +15273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5900002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20953,6 +20968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 951381023}
+  - component: {fileID: 951381024}
   m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
@@ -20976,6 +20992,20 @@ Transform:
   m_Father: {fileID: 2081183625}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &951381024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951381022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0ad2f23026f6d4799c70803669e353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 375792356}
+  rotateSpeed: 15
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -21092,6 +21122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967999383}
+  - component: {fileID: 967999384}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -21115,6 +21146,20 @@ Transform:
   m_Father: {fileID: 2081183625}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &967999384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967999382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0ad2f23026f6d4799c70803669e353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 375792356}
+  rotateSpeed: 15
 --- !u!1 &968283761
 GameObject:
   m_ObjectHideFlags: 0
@@ -31706,7 +31751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5900002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42114,7 +42159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8018429946725390617, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
       propertyPath: m_LocalRotation.w
@@ -47151,6 +47196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362221028}
+  - component: {fileID: 1362221029}
   m_Layer: 0
   m_Name: Rear
   m_TagString: Untagged
@@ -47174,6 +47220,20 @@ Transform:
   m_Father: {fileID: 2081183625}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362221029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362221027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0ad2f23026f6d4799c70803669e353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 375792356}
+  rotateSpeed: 15
 --- !u!1 &1368205145
 GameObject:
   m_ObjectHideFlags: 0
@@ -60497,7 +60557,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2081183625}
-  - component: {fileID: 2081183626}
   m_Layer: 0
   m_Name: Grenade group
   m_TagString: Untagged
@@ -60524,20 +60583,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2081183626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081183624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e0ad2f23026f6d4799c70803669e353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 375792356}
-  rotateSpeed: 15
 --- !u!1 &2083638408
 GameObject:
   m_ObjectHideFlags: 0
