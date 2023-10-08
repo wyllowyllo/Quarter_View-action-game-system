@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
     public GameObject menuCamera;
@@ -26,7 +28,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject menuPanel;
     public GameObject gamePanel;
+    public GameObject overPanel;
+
     public Text maxScoreText;
+
     public Text scoreText;
     public Text playTimeText;
     public Text stageText;
@@ -43,10 +48,16 @@ public class GameManager : MonoBehaviour
     public RectTransform bossHealthGroup;
     public RectTransform bossHealthBar;
 
+    public Text bestText;
+    public Text curScoreText;
+
     private void Awake()
     {
         maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
         enemyList = new List<int>();
+
+        if (!PlayerPrefs.HasKey("MaxScore"))
+            PlayerPrefs.SetInt("MaxScore", 0);
         
     }
 
@@ -65,6 +76,26 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void GameOver()
+    {
+        curScoreText.text = scoreText.text;
+        gamePanel.SetActive(false);
+        overPanel.SetActive(true);
+
+        int max = PlayerPrefs.GetInt("MaxScore");
+        if (max < player.score)
+        {
+            bestText.gameObject.SetActive(true);
+            PlayerPrefs.SetInt("MaxScore", player.score);
+        }
+
+       
+    }
+
+    public void ReStart()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void StageStart()
     {
         isBattle = true;
@@ -186,7 +217,14 @@ public class GameManager : MonoBehaviour
         enemyCText.text = "x " + enemyNumC.ToString();
 
         //Boss Health bar UI
-        if(boss!=null)
+        if (boss != null)
+        {
+            bossHealthGroup.anchoredPosition = Vector3.down * -30;
             bossHealthBar.localScale = new Vector3((float)boss.curHealth / boss.maxHealth, 1, 1);
+        }
+        else
+        {
+            bossHealthGroup.anchoredPosition = Vector3.up * 300;
+        }
     }
 }

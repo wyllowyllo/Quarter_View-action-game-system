@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     bool isAttack;
     bool isChase;
+    
     public bool isDead;
     protected void Awake()
     {
@@ -185,6 +186,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator OnDamage(Vector3 reactVec, bool isGrenade)
     {
+        
         foreach(MeshRenderer mesh in meshs)
             mesh.material.color = Color.red;
 
@@ -199,7 +201,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            StopCoroutine(Attack());  //Á×¾úÀ¸¸é °ø°Ý·çÆ¾ Áï½Ã ¸ØÃã
+            //StopCoroutine(Attack());  //Á×¾úÀ¸¸é °ø°Ý·çÆ¾ Áï½Ã ¸ØÃã
+            StopAllCoroutines();
             if (isGrenade)
             {
                
